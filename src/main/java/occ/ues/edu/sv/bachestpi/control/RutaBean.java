@@ -4,11 +4,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import occ.ues.edu.sv.bachestpi.entity.Estado;
+import occ.ues.edu.sv.bachestpi.entity.Ruta;
 
 public class RutaBean {
 
-    public boolean crear(Estado nuevo) {
+    public boolean crear(Ruta nueva) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("bachesUP");
         EntityManager em = emf.createEntityManager();
         EntityTransaction et = em.getTransaction();
@@ -16,7 +16,7 @@ public class RutaBean {
         try {
 
             et.begin();
-            em.persist(nuevo);
+            em.persist(nueva);
             et.commit();
             return true;
         } catch (Exception e) {
