@@ -6,6 +6,7 @@
 package occ.ues.edu.sv.bachestpi.control;
 
 import java.util.Date;
+import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
 import occ.ues.edu.sv.bachestpi.entity.Estado;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,7 +35,7 @@ public class EstadoBeanTest {
     }
     */
     @org.junit.jupiter.api.Test
-    public void testEliminar(){
+    public void testEliminar() throws NonexistentEntityException{
         System.out.println("Eliminar");
         Estado delete= new Estado();
         EstadoBean instance=new EstadoBean();
