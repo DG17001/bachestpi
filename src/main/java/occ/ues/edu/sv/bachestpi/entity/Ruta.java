@@ -31,6 +31,7 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Ruta.findByNombre", query = "SELECT r FROM Ruta r WHERE r.nombre = :nombre"),
     @NamedQuery(name = "Ruta.findByFechaCreacion", query = "SELECT r FROM Ruta r WHERE r.fechaCreacion = :fechaCreacion"),
     @NamedQuery(name = "Ruta.findByObservaciones", query = "SELECT r FROM Ruta r WHERE r.observaciones = :observaciones")})
+
 public class Ruta implements Serializable {
 
     private static final long serialVersionUID = 1L;
