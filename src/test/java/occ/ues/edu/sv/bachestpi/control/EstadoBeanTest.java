@@ -8,7 +8,6 @@ package occ.ues.edu.sv.bachestpi.control;
 import java.util.Date;
 import occ.ues.edu.sv.bachestpi.entity.Estado;
 import static org.junit.jupiter.api.Assertions.*;
-import sun.awt.X11.XConstants;
 
 /**
  *
@@ -40,7 +39,7 @@ public class EstadoBeanTest {
         Estado delete= new Estado();
         EstadoBean instance=new EstadoBean();
         boolean expResult=true;
-        boolean result=instance.eliminar(12);
+        boolean result=instance.eliminar(11);
         assertEquals(expResult, result);
     }
     

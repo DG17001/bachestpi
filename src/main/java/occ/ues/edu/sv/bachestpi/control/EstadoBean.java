@@ -3,7 +3,6 @@ package occ.ues.edu.sv.bachestpi.control;
 import java.io.Serializable;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
@@ -43,7 +42,7 @@ public class EstadoBean implements Serializable{
             tx.commit();
             return true;
             
-        } catch (EntityNotFoundException enfe) {
+        } catch (Exception e) {
             tx.rollback();
         }
         return false;
