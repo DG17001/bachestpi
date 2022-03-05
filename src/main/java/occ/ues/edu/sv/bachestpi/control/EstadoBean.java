@@ -58,8 +58,9 @@ public class EstadoBean implements Serializable{
             em.merge(mod);
             tx.commit();
             return true;
+            
         } catch (Exception e) {
-        
+            tx.rollback();
         }
         
         return false;
