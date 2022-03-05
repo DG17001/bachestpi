@@ -33,8 +33,16 @@ public class RutaBeanTest extends TestCase {
         RutaBean instance = new RutaBean();
         boolean expResult = true;
         boolean result = instance.crear(nueva);
+        assertEquals(expResult, result);  
+    }
+    
+    @org.junit.jupiter.api.Test 
+    public void testElminar() throws NonexistentEntityException{
+        System.out.println("Delete");
+        RutaBean instance=new RutaBean();
+        boolean expResult=true;
+        boolean result=instance.eliminar(0007L);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
    
 }
