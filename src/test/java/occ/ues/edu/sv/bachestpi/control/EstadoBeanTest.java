@@ -21,7 +21,7 @@ public class EstadoBeanTest {
 
     /**
      * Test of crear method, of class EstadoBean.
-    */ 
+    */      
     @org.junit.jupiter.api.Test
     public void testCrear() {
         System.out.println("Crear");
@@ -39,7 +39,7 @@ public class EstadoBeanTest {
         System.out.println("Eliminar");
         EstadoBean instance=new EstadoBean();
         boolean expResult=true;
-        boolean result=instance.eliminar(14);
+        boolean result=instance.eliminar(7);
         assertEquals(expResult, result);
     }
 
@@ -47,7 +47,13 @@ public class EstadoBeanTest {
     public void testModificar(){
         System.out.println("Modificar");
         Estado editar=new Estado();
-        editar.setIdEstado(Integer.SIZE);
+        editar.setIdEstado(6);
+        editar.setNombre("Modificando tupla");
+        editar.setFechaCreacion(new Date());
+        EstadoBean instance=new EstadoBean();
+        boolean expResult=true;
+        boolean result=instance.modificar(editar);
+        assertEquals(expResult, result);
     }
-  
+
 }    
