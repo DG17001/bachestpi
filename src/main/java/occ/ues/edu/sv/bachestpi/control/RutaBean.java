@@ -15,11 +15,11 @@ public class RutaBean {
         EntityTransaction et = em.getTransaction();
 
         try {
-
             et.begin();
             em.persist(nueva);
             et.commit();
             return true;
+            
         } catch (Exception e) {
             et.rollback();
         }
@@ -27,9 +27,9 @@ public class RutaBean {
         return false;
     }
     
-    public boolean eliminar(int id) throws NonexistentEntityException{
+    public boolean eliminar(Integer id) throws NonexistentEntityException{
         Ruta eliminar;
-        EntityManagerFactory emf= Persistence.createEntityManagerFactory("bachesPU");
+        EntityManagerFactory emf= Persistence.createEntityManagerFactory("bachesUP");
         EntityManager em= emf.createEntityManager();
         EntityTransaction et=em.getTransaction();
         eliminar=em.getReference(Ruta.class, id);
@@ -40,6 +40,7 @@ public class RutaBean {
             em.remove(eliminar);
             et.commit();
             return true;
+            
         } catch (Exception e) {
             et.rollback();
             

@@ -22,6 +22,7 @@ public class RutaBeanTest extends TestCase {
 
     /**
      * Test of crear method, of class RutaBean.
+    */
     
     @org.junit.jupiter.api.Test 
     public void testCrear() {
@@ -35,14 +36,5 @@ public class RutaBeanTest extends TestCase {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }
-    */
-    
-    @org.junit.jupiter.api.Test
-    public void testRemove() throws NonexistentEntityException{
-        System.out.println("Eliminar");        
-        RutaBean instace=new RutaBean();
-        boolean expResult=true;
-        boolean result=instace.eliminar(2);
-        
-    }
+   
 }
