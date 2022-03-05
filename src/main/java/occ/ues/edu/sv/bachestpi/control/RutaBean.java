@@ -27,7 +27,7 @@ public class RutaBean {
         return false;
     }
     
-    public boolean eliminar(Integer id) throws NonexistentEntityException{
+    public boolean eliminar(Long id) throws NonexistentEntityException{
         Ruta eliminar;
         EntityManagerFactory emf= Persistence.createEntityManagerFactory("bachesUP");
         EntityManager em= emf.createEntityManager();
@@ -44,6 +44,22 @@ public class RutaBean {
         } catch (Exception e) {
             et.rollback();
             
+        }
+        return false;
+    }
+    
+    public boolean modificar(Ruta modificar){
+        EntityManagerFactory emf=Persistence.createEntityManagerFactory("bachesUP");
+        EntityManager em=emf.createEntityManager();
+        EntityTransaction et=em.getTransaction();
+        
+        try {
+            et.begin();
+            em.merge(modificar);
+            et.commit();
+            return true;
+            
+        } catch (Exception e) {
         }
         return false;
     }
