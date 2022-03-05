@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
 import occ.ues.edu.sv.bachestpi.entity.Ruta;
 
 public class RutaBean {
@@ -23,6 +24,26 @@ public class RutaBean {
             et.rollback();
         }
 
+        return false;
+    }
+    
+    public boolean eliminar(int id) throws NonexistentEntityException{
+        Ruta eliminar;
+        EntityManagerFactory emf= Persistence.createEntityManagerFactory("bachesPU");
+        EntityManager em= emf.createEntityManager();
+        EntityTransaction et=em.getTransaction();
+        eliminar=em.getReference(Ruta.class, id);
+        
+        try {
+            et.begin();
+            eliminar.getIdRuta();
+            em.remove(eliminar);
+            et.commit();
+            return true;
+        } catch (Exception e) {
+            et.rollback();
+            
+        }
         return false;
     }
 
