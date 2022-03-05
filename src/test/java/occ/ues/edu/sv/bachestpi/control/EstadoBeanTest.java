@@ -21,7 +21,7 @@ public class EstadoBeanTest {
 
     /**
      * Test of crear method, of class EstadoBean.
-     
+    */ 
     @org.junit.jupiter.api.Test
     public void testCrear() {
         System.out.println("Crear");
@@ -33,15 +33,21 @@ public class EstadoBeanTest {
         boolean result = instance.crear(nuevo);
         assertEquals(expResult, result);
     }
-    */
+    
     @org.junit.jupiter.api.Test
     public void testEliminar() throws NonexistentEntityException{
         System.out.println("Eliminar");
-        Estado delete= new Estado();
         EstadoBean instance=new EstadoBean();
         boolean expResult=true;
         boolean result=instance.eliminar(11);
         assertEquals(expResult, result);
+    }
+    
+    @org.junit.jupiter.api.Test
+    public void testModificar(){
+        System.out.println("Modificar");
+        Estado editar=new Estado();
+        editar.setIdEstado(Integer.SIZE);
     }
     
 }    

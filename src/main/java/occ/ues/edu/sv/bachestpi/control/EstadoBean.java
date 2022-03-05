@@ -47,4 +47,21 @@ public class EstadoBean implements Serializable{
         }
         return false;
     }
+    
+    public boolean modificar(Estado mod){
+        EntityManagerFactory emf= Persistence.createEntityManagerFactory("bachesUP");
+        EntityManager em=emf.createEntityManager();
+        EntityTransaction tx=em.getTransaction();
+        
+        try {
+            tx.begin();
+            em.merge(mod);
+            tx.commit();
+            return true;
+        } catch (Exception e) {
+        
+        }
+        
+        return false;
+    }
 }
