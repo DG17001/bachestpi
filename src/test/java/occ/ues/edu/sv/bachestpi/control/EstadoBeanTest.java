@@ -21,7 +21,7 @@ public class EstadoBeanTest {
 
     /**
      * Test of crear method, of class EstadoBean.
-    */      
+     */          
     @org.junit.jupiter.api.Test
     public void testCrear() {
         System.out.println("Crear");

@@ -44,5 +44,17 @@ public class RutaBeanTest extends TestCase {
         boolean result=instance.eliminar(0007L);
         assertEquals(expResult, result);
     }
+    
+    public void testModificar(){
+        System.out.println("Modificando");
+        Ruta modificar=new Ruta();
+        modificar.setIdRuta(0001L);
+        modificar.setNombre("Modificando tupla");
+        modificar.setFechaCreacion(new Date());
+        RutaBean instance=new RutaBean();
+        boolean expResult=true;
+        boolean result=instance.modificar(modificar);
+        assertEquals(expResult, result);
+    }
    
 }
