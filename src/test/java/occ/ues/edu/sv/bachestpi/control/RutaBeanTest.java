@@ -8,6 +8,7 @@ package occ.ues.edu.sv.bachestpi.control;
 import java.util.Date;
 import junit.framework.TestCase;
 import occ.ues.edu.sv.bachestpi.control.RutaBean;
+import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
 import occ.ues.edu.sv.bachestpi.entity.Ruta;
 
 /**
@@ -21,7 +22,8 @@ public class RutaBeanTest extends TestCase {
 
     /**
      * Test of crear method, of class RutaBean.
-     */
+    
+    @org.junit.jupiter.api.Test 
     public void testCrear() {
         System.out.println("crear");
         Ruta nueva= new Ruta();
@@ -33,5 +35,14 @@ public class RutaBeanTest extends TestCase {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }
+    */
     
+    @org.junit.jupiter.api.Test
+    public void testRemove() throws NonexistentEntityException{
+        System.out.println("Eliminar");        
+        RutaBean instace=new RutaBean();
+        boolean expResult=true;
+        boolean result=instace.eliminar(2);
+        
+    }
 }
