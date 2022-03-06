@@ -7,6 +7,7 @@ package occ.ues.edu.sv.bachestpi.control;
 
 import java.util.Date;
 import junit.framework.TestCase;
+import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
 import occ.ues.edu.sv.bachestpi.entity.TipoObjeto;
 
 /**
@@ -32,5 +33,13 @@ public class TipoObjetoBeanTest extends TestCase {
         boolean result = instance.crear(nuevo);
         assertEquals(expResult, result);
     }
+    
+   public void testEliminar() throws NonexistentEntityException{
+       System.out.println("Eliminar");
+       TipoObjetoBean instance=new TipoObjetoBean();
+       boolean expResult=true;
+       boolean result=instance.eliminar(2);
+       assertEquals(expResult, result);
+   }
     
 }
