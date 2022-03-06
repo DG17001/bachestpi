@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
+import occ.ues.edu.sv.bachestpi.entity.Estado;
 import occ.ues.edu.sv.bachestpi.entity.Ruta;
 
 public class RutaBean {
@@ -22,6 +23,10 @@ public class RutaBean {
             
         } catch (Exception e) {
             et.rollback();
+        }finally {
+           if (em!=null){
+            em.close();
+        }
         }
 
         return false;
@@ -43,23 +48,35 @@ public class RutaBean {
             
         } catch (Exception e) {
             et.rollback();
-            
+        }finally {
+           if (em!=null){
+            em.close();
+        }
         }
         return false;
     }
     
-    public boolean modificar(Ruta modificar){
-        EntityManagerFactory emf=Persistence.createEntityManagerFactory("bachesUP");
+    public boolean modificar(Ruta modificar) throws NonexistentEntityException{
+        EntityManagerFactory emf= Persistence.createEntityManagerFactory("bachesUP");
         EntityManager em=emf.createEntityManager();
-        EntityTransaction et=em.getTransaction();
+        EntityTransaction tx=em.getTransaction();
         
         try {
-            et.begin();
+            tx.begin();
+            em.find(Estado.class, modificar.getIdRuta());
+            // Si el registro con el id obtenido no existe, se creara uno nuevo
             em.merge(modificar);
-            et.commit();
+            tx.commit();
             return true;
             
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
+            if(tx.isActive()){
+                tx.rollback();
+            }
+        }finally {
+           if (em!=null){
+            em.close();
+        }
         }
         return false;
     }
