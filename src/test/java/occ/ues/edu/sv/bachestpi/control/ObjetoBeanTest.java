@@ -48,7 +48,7 @@ public class ObjetoBeanTest extends TestCase {
     
     /**
      * Test of modificar method, of class ObjetoBean.
-     
+    }*/ 
     public void testModificar() throws Exception {
         System.out.println("modificar");
         Objeto mod = null;
@@ -58,5 +58,5 @@ public class ObjetoBeanTest extends TestCase {
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }*/
+    
 }
