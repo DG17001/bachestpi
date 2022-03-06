@@ -5,8 +5,9 @@
  */
 package occ.ues.edu.sv.bachestpi.control;
 
+import java.util.Date;
 import junit.framework.TestCase;
-import occ.ues.edu.sv.bachestpi.entity.Objeto;
+import occ.ues.edu.sv.bachestpi.entity.TipoObjeto;
 
 /**
  *
@@ -23,13 +24,13 @@ public class TipoObjetoBeanTest extends TestCase {
      */
     public void testCrear() {
         System.out.println("crear");
-        Objeto nuevo = null;
-        TipoObjetoBean instance = new TipoObjetoBean();
-        boolean expResult = false;
+        TipoObjeto nuevo = new TipoObjeto();
+        nuevo.setActivo(true);
+        nuevo.setFechaCreacion(new Date());
+        TipoObjetoBean instance= new TipoObjetoBean();
+        boolean expResult = true;
         boolean result = instance.crear(nuevo);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
