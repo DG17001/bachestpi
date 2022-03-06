@@ -24,6 +24,10 @@ public class EstadoBean implements Serializable{
             
         } catch (Exception e) {
             tx.rollback();
+        }finally {
+           if (em!=null){
+            em.close();
+        }
         }
         return false;
     }
@@ -44,25 +48,36 @@ public class EstadoBean implements Serializable{
             
         } catch (Exception e) {
             tx.rollback();
+        }finally {
+           if (em!=null){
+            em.close();
+        }
         }
         return false;
     }
     
-    public boolean modificar(Estado mod){
+    public boolean modificar(Estado mod) throws NonexistentEntityException{
         EntityManagerFactory emf= Persistence.createEntityManagerFactory("bachesUP");
         EntityManager em=emf.createEntityManager();
         EntityTransaction tx=em.getTransaction();
         
         try {
             tx.begin();
+            em.find(Estado.class, mod.getIdEstado());
+            // Si el registro con el id obtenido no existe, se creara uno nuevo
             em.merge(mod);
             tx.commit();
             return true;
             
-        } catch (Exception e) {
-            tx.rollback();
+        } catch (RuntimeException e) {
+            if(tx.isActive()){
+                tx.rollback();
+            }
+        }finally {
+           if (em!=null){
+            em.close();
         }
-        
+        }
         return false;
     }
 }
