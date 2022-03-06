@@ -9,6 +9,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
+import occ.ues.edu.sv.bachestpi.entity.Objeto;
 import occ.ues.edu.sv.bachestpi.entity.ObjetoEstado;
 
 /**
@@ -37,7 +39,7 @@ public class ObjetoEstadoBean {
         return false;
     }
     
-    public boolean eliminar(Long id){
+    public boolean eliminar(Long id) throws NonexistentEntityException{
         ObjetoEstado borrar;
         borrar=em.getReference(ObjetoEstado.class, id);
         
@@ -56,6 +58,27 @@ public class ObjetoEstadoBean {
             }
         }
         return true;
+    }
+    
+    public boolean modificar(ObjetoEstado modificar) throws NonexistentEntityException{
+        try {
+            tx.begin();
+            em.find(ObjetoEstado.class, modificar.getIdObjeto());
+            // Si el registro con el id obtenido no existe, se creara uno nuevo
+            em.merge(modificar);
+            tx.commit();
+            return true;
+            
+        } catch (RuntimeException e) {
+            if(tx.isActive()){
+                tx.rollback();
+            }
+        }finally {
+           if (em!=null){
+            em.close();
+        }
+        }
+        return false;
     }
     
 }
