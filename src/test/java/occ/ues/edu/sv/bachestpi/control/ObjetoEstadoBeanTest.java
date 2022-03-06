@@ -34,4 +34,12 @@ public class ObjetoEstadoBeanTest extends TestCase {
         assertEquals(expResult, result);
     }
     
+    public void testEliminar(){
+        System.out.println("Eliminar");
+        ObjetoEstadoBean instance=new ObjetoEstadoBean();
+        boolean expResult=true;
+        boolean result=instance.eliminar(2L);
+        assertEquals(expResult, result);
+    }
+    
 }
