@@ -5,6 +5,7 @@
  */
 package occ.ues.edu.sv.bachestpi.control;
 
+import java.math.BigDecimal;
 import junit.framework.TestCase;
 import occ.ues.edu.sv.bachestpi.entity.Objeto;
 
@@ -20,16 +21,21 @@ public class ObjetoBeanTest extends TestCase {
 
     /**
      * Test of crear method, of class ObjetoBean.
-     */
+    */ 
     public void testCrear() {
         System.out.println("crear");
-        Objeto nuevo = null;
+        Objeto nuevo = new Objeto();
+        BigDecimal latitud=new BigDecimal(6.1234567890);
+        BigDecimal longitud=new BigDecimal(4.6152112981);
+        nuevo.setIdObjeto(1L);
+        nuevo.setLatitud(latitud);
+        nuevo.setLongitud(longitud);
+        nuevo.setNombre("Creado desde ObjetoBeanTest");
         ObjetoBean instance = new ObjetoBean();
         boolean expResult = true;
         boolean result = instance.crear(nuevo);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
     
     /**
@@ -37,13 +43,10 @@ public class ObjetoBeanTest extends TestCase {
     */
     public void testEliminar() throws Exception {
         System.out.println("eliminar");
-        Integer id = null;
         ObjetoBean instance = new ObjetoBean();
-        boolean expResult = false;
-        boolean result = instance.eliminar(id);
+        boolean expResult = true;
+        boolean result = instance.eliminar(2L);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
     /**
@@ -51,13 +54,16 @@ public class ObjetoBeanTest extends TestCase {
     */
     public void testModificar() throws Exception {
         System.out.println("modificar");
-        Objeto mod = null;
+        Objeto modificar = new Objeto();
+        BigDecimal latitud=new BigDecimal(2.1234567890);
+        BigDecimal longitud=new BigDecimal(5.6152112981);
+        modificar.setIdObjeto(2L);
+        modificar.setLatitud(latitud);
+        modificar.setLongitud(longitud);
+        modificar.setNombre("creando nuevo registro");
         ObjetoBean instance = new ObjetoBean();
-        boolean expResult = false;
-        boolean result = instance.modificar(mod);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    
+        boolean expResult = true;
+        boolean result = instance.modificar(modificar);
+        assertEquals(expResult, result);    
    }
 }

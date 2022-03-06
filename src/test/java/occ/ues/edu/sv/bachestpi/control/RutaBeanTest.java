@@ -34,7 +34,6 @@ public class RutaBeanTest extends TestCase {
         boolean expResult = true;
         boolean result = instance.crear(nueva);
         assertEquals(expResult, result);  
-        fail("The test case is a prototype.");
     }
     
     @org.junit.jupiter.api.Test 
@@ -44,7 +43,6 @@ public class RutaBeanTest extends TestCase {
         boolean expResult=true;
         boolean result=instance.eliminar(0007L);
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
     
     public void testModificar() throws NonexistentEntityException{
@@ -57,7 +55,6 @@ public class RutaBeanTest extends TestCase {
         boolean expResult=true;
         boolean result=instance.modificar(modificar);
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
    
 }

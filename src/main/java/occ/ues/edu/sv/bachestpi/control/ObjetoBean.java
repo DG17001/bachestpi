@@ -6,11 +6,11 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
 import occ.ues.edu.sv.bachestpi.entity.Objeto;
+import occ.ues.edu.sv.bachestpi.entity.TipoObjeto;
 
 public class ObjetoBean {
     
     public boolean crear(Objeto nuevo){
-
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("bachesUP");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
@@ -32,7 +32,7 @@ public class ObjetoBean {
     }
 
     
-    public boolean eliminar(Integer id) throws NonexistentEntityException{
+    public boolean eliminar(Long id) throws NonexistentEntityException{
         Objeto eliminar;
         EntityManagerFactory emf=Persistence.createEntityManagerFactory("bachesUP");
         EntityManager em=emf.createEntityManager();

@@ -34,7 +34,6 @@ public class EstadoBeanTest {
         boolean expResult = true;
         boolean result = instance.crear(nuevo);
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
   
     @org.junit.jupiter.api.Test
@@ -44,7 +43,6 @@ public class EstadoBeanTest {
         boolean expResult=true;
         boolean result=instance.eliminar(7);
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
 
     @org.junit.jupiter.api.Test
@@ -58,7 +56,6 @@ public class EstadoBeanTest {
         boolean expResult=true;
         boolean result=instance.modificar(editar);
         assertEquals(expResult, result);
-        fail("The test case is a prototype.");
     }
 
 }    
