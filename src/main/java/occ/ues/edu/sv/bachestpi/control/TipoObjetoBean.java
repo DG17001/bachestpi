@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import occ.ues.edu.sv.bachestpi.entity.Objeto;
+import occ.ues.edu.sv.bachestpi.entity.TipoObjeto;
 
 /**
  *
@@ -17,7 +17,7 @@ import occ.ues.edu.sv.bachestpi.entity.Objeto;
  */
 public class TipoObjetoBean {
     
- public boolean crear(Objeto nuevo){
+ public boolean crear(TipoObjeto nuevo){
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("bachesUP");
         EntityManager em = emf.createEntityManager();
