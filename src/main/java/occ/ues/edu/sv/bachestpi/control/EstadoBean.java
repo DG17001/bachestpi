@@ -9,13 +9,13 @@ import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
 import occ.ues.edu.sv.bachestpi.entity.Estado;
 
 public class EstadoBean implements Serializable{
-
-    public boolean crear(Estado nuevo){
-
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("bachesUP");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-
+    
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("bachesUP");
+    EntityManager em = emf.createEntityManager();
+    EntityTransaction tx = em.getTransaction();
+    
+    public boolean crear(Estado nuevo){      
+        
         try {
             tx.begin();
             em.persist(nuevo);
@@ -34,9 +34,6 @@ public class EstadoBean implements Serializable{
 
     public boolean eliminar(Integer id) throws NonexistentEntityException{
         Estado eliminar;
-        EntityManagerFactory emf=Persistence.createEntityManagerFactory("bachesUP");
-        EntityManager em=emf.createEntityManager();
-        EntityTransaction tx=em.getTransaction();
         eliminar=em.getReference(Estado.class,id);
         
         try {
@@ -57,9 +54,6 @@ public class EstadoBean implements Serializable{
     }
     
     public boolean modificar(Estado mod) throws NonexistentEntityException{
-        EntityManagerFactory emf= Persistence.createEntityManagerFactory("bachesUP");
-        EntityManager em=emf.createEntityManager();
-        EntityTransaction tx=em.getTransaction();
         
         try {
             tx.begin();

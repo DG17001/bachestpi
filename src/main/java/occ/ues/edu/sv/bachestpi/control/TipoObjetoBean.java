@@ -18,11 +18,11 @@ import occ.ues.edu.sv.bachestpi.entity.TipoObjeto;
  */
 public class TipoObjetoBean {
     
- public boolean crear(TipoObjeto nuevo){
-
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("bachesUP");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("bachesUP");
+    EntityManager em = emf.createEntityManager();
+    EntityTransaction tx = em.getTransaction();
+    
+ public boolean crear(TipoObjeto nuevo){       
 
         try {
             tx.begin();
@@ -42,9 +42,6 @@ public class TipoObjetoBean {
  
     public boolean eliminar(Integer id) throws NonexistentEntityException{
         TipoObjeto eliminar;
-        EntityManagerFactory emf=Persistence.createEntityManagerFactory("bachesUP");
-        EntityManager em=emf.createEntityManager();
-        EntityTransaction tx=em.getTransaction();
         eliminar=em.getReference(TipoObjeto.class,id);
         
         try {
@@ -65,9 +62,6 @@ public class TipoObjetoBean {
     }
     
        public boolean modificar(TipoObjeto mod) throws NonexistentEntityException{
-        EntityManagerFactory emf= Persistence.createEntityManagerFactory("bachesUP");
-        EntityManager em=emf.createEntityManager();
-        EntityTransaction tx=em.getTransaction();
         
         try {
             tx.begin();

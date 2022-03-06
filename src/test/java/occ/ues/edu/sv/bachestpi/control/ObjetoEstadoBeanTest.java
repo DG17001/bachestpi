@@ -16,6 +16,7 @@ import occ.ues.edu.sv.bachestpi.entity.ObjetoEstado;
 public class ObjetoEstadoBeanTest extends TestCase {
     
     public ObjetoEstadoBeanTest(String testName) {
+        super(testName);
     }
 
     /**
@@ -24,11 +25,11 @@ public class ObjetoEstadoBeanTest extends TestCase {
     public void testCrear() {
         System.out.println("crear");
         ObjetoEstado nuevo = new ObjetoEstado();
-        nuevo.setIdObjetoEstado(1l);
+        nuevo.setIdObjetoEstado(1L);
         nuevo.setActual(true);
         nuevo.setFechaAlcanzado(new Date());
         ObjetoEstadoBean instance = new ObjetoEstadoBean();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.crear(nuevo);
         assertEquals(expResult, result);
     }

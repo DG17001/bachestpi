@@ -6,15 +6,15 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
 import occ.ues.edu.sv.bachestpi.entity.Objeto;
-import occ.ues.edu.sv.bachestpi.entity.TipoObjeto;
 
 public class ObjetoBean {
     
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("bachesUP");
+    EntityManager em = emf.createEntityManager();
+    EntityTransaction tx = em.getTransaction();
+        
     public boolean crear(Objeto nuevo){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("bachesUP");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-
+        
         try {
             tx.begin();
             em.persist(nuevo);
@@ -34,9 +34,6 @@ public class ObjetoBean {
     
     public boolean eliminar(Long id) throws NonexistentEntityException{
         Objeto eliminar;
-        EntityManagerFactory emf=Persistence.createEntityManagerFactory("bachesUP");
-        EntityManager em=emf.createEntityManager();
-        EntityTransaction tx=em.getTransaction();
         eliminar=em.getReference(Objeto.class,id);
         
         try {
@@ -56,10 +53,7 @@ public class ObjetoBean {
         return false;
     }
     
-        public boolean modificar(Objeto mod) throws NonexistentEntityException{
-        EntityManagerFactory emf= Persistence.createEntityManagerFactory("bachesUP");
-        EntityManager em=emf.createEntityManager();
-        EntityTransaction tx=em.getTransaction();
+    public boolean modificar(Objeto mod) throws NonexistentEntityException{
         
         try {
             tx.begin();
