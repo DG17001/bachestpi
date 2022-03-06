@@ -63,4 +63,29 @@ public class TipoObjetoBean {
         }
         return false;
     }
+    
+       public boolean modificar(TipoObjeto mod) throws NonexistentEntityException{
+        EntityManagerFactory emf= Persistence.createEntityManagerFactory("bachesUP");
+        EntityManager em=emf.createEntityManager();
+        EntityTransaction tx=em.getTransaction();
+        
+        try {
+            tx.begin();
+            em.find(TipoObjeto.class, mod.getIdTipoObjeto());
+            // Si el registro con el id obtenido no existe, se creara uno nuevo
+            em.merge(mod);
+            tx.commit();
+            return true;
+            
+        } catch (RuntimeException e) {
+            if(tx.isActive()){
+                tx.rollback();
+            }
+        }finally {
+           if (em!=null){
+            em.close();
+        }
+        }
+        return false;
+    }
 }
