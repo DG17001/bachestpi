@@ -37,4 +37,25 @@ public class ObjetoEstadoBean {
         return false;
     }
     
+    public boolean eliminar(Long id){
+        ObjetoEstado borrar;
+        borrar=em.getReference(ObjetoEstado.class, id);
+        
+        try {
+            tx.begin();
+            borrar.getIdObjetoEstado();
+            em.remove(borrar);
+            tx.commit();
+            return true;
+            
+        } catch (Exception e) {
+            tx.rollback();
+        }finally{
+            if(em!=null){
+                em.close();
+            }
+        }
+        return true;
+    }
+    
 }
