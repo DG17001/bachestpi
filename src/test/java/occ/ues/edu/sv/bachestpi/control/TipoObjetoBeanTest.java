@@ -22,7 +22,7 @@ public class TipoObjetoBeanTest extends TestCase {
 
     /**
      * Test of crear method, of class TipoObjetoBean.
-     */
+    */ 
     public void testCrear() {
         System.out.println("crear");
         TipoObjeto nuevo = new TipoObjeto();
@@ -41,5 +41,16 @@ public class TipoObjetoBeanTest extends TestCase {
        boolean result=instance.eliminar(2);
        assertEquals(expResult, result);
    }
-    
+   
+   public void testModificar()throws NonexistentEntityException{
+       System.out.println("Modificar");
+       TipoObjeto modificar=new TipoObjeto();
+       modificar.setIdTipoObjeto(3);
+       modificar.setActivo(false);
+       modificar.setFechaCreacion(new Date());
+       TipoObjetoBean instance=new TipoObjetoBean();
+       boolean expResult=true;
+       boolean result=instance.modificar(modificar);
+       assertEquals(expResult, result);
+   }
 }
