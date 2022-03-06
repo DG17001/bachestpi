@@ -45,5 +45,18 @@ public class ObjetoBeanTest extends TestCase {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-       
+    
+    /**
+     * Test of modificar method, of class ObjetoBean.
+     
+    public void testModificar() throws Exception {
+        System.out.println("modificar");
+        Objeto mod = null;
+        ObjetoBean instance = new ObjetoBean();
+        boolean expResult = false;
+        boolean result = instance.modificar(mod);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }*/
 }
