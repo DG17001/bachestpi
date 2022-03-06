@@ -22,7 +22,7 @@ public class TipoObjetoBeanTest extends TestCase {
 
     /**
      * Test of crear method, of class TipoObjetoBean.
-    */ 
+    */
     public void testCrear() {
         System.out.println("crear");
         TipoObjeto nuevo = new TipoObjeto();
@@ -32,6 +32,7 @@ public class TipoObjetoBeanTest extends TestCase {
         boolean expResult = true;
         boolean result = instance.crear(nuevo);
         assertEquals(expResult, result);
+        fail("The test case is a prototype.");
     }
     
    public void testEliminar() throws NonexistentEntityException{
@@ -40,8 +41,9 @@ public class TipoObjetoBeanTest extends TestCase {
        boolean expResult=true;
        boolean result=instance.eliminar(2);
        assertEquals(expResult, result);
+       fail("The test case is a prototype.");
    }
-   
+    
    public void testModificar()throws NonexistentEntityException{
        System.out.println("Modificar");
        TipoObjeto modificar=new TipoObjeto();
@@ -52,5 +54,6 @@ public class TipoObjetoBeanTest extends TestCase {
        boolean expResult=true;
        boolean result=instance.modificar(modificar);
        assertEquals(expResult, result);
+       fail("The test case is a prototype.");
    }
 }
