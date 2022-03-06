@@ -7,6 +7,7 @@ package occ.ues.edu.sv.bachestpi.control;
 
 import java.util.Date;
 import junit.framework.TestCase;
+import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
 import occ.ues.edu.sv.bachestpi.entity.ObjetoEstado;
 
 /**
@@ -21,11 +22,10 @@ public class ObjetoEstadoBeanTest extends TestCase {
 
     /**
      * Test of crear method, of class ObjetoEstadoBean.
-     */
+     
     public void testCrear() {
         System.out.println("crear");
         ObjetoEstado nuevo = new ObjetoEstado();
-        nuevo.setIdObjetoEstado(1L);
         nuevo.setActual(true);
         nuevo.setFechaAlcanzado(new Date());
         ObjetoEstadoBean instance = new ObjetoEstadoBean();
@@ -34,11 +34,23 @@ public class ObjetoEstadoBeanTest extends TestCase {
         assertEquals(expResult, result);
     }
     
-    public void testEliminar(){
+    public void testEliminar()throws NonexistentEntityException{
         System.out.println("Eliminar");
         ObjetoEstadoBean instance=new ObjetoEstadoBean();
         boolean expResult=true;
-        boolean result=instance.eliminar(2L);
+        boolean result=instance.eliminar(1L);
+        assertEquals(expResult, result);
+    }
+    */
+    public void testModificar() throws NonexistentEntityException{
+        System.out.println("Modificar");
+        ObjetoEstado mod=new ObjetoEstado();
+        mod.setIdObjetoEstado(1L);
+        mod.setActual(false);
+        mod.setFechaAlcanzado(new Date());
+        ObjetoEstadoBean instance=new ObjetoEstadoBean();
+        boolean expResult=true;
+        boolean result=instance.modificar(mod);
         assertEquals(expResult, result);
     }
     

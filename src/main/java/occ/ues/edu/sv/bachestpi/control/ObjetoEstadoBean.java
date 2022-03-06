@@ -63,7 +63,7 @@ public class ObjetoEstadoBean {
     public boolean modificar(ObjetoEstado modificar) throws NonexistentEntityException{
         try {
             tx.begin();
-            em.find(ObjetoEstado.class, modificar.getIdObjeto());
+            em.find(ObjetoEstado.class, modificar.getIdObjetoEstado());
             // Si el registro con el id obtenido no existe, se creara uno nuevo
             em.merge(modificar);
             tx.commit();
