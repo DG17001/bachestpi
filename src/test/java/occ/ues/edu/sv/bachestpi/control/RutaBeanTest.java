@@ -45,7 +45,7 @@ public class RutaBeanTest extends TestCase {
         assertEquals(expResult, result);
     }
     
-    public void testModificar(){
+    public void testModificar() throws NonexistentEntityException{
         System.out.println("Modificando");
         Ruta modificar=new Ruta();
         modificar.setIdRuta(0001L);
