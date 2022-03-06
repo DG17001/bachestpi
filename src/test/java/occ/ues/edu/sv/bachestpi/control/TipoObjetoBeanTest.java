@@ -17,7 +17,7 @@ import occ.ues.edu.sv.bachestpi.entity.TipoObjeto;
 public class TipoObjetoBeanTest extends TestCase {
     
     public TipoObjetoBeanTest(String testName) {
-        super(testName);
+        
     }
 
     /**

@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import occ.ues.edu.sv.bachestpi.entity.Objeto;
+import occ.ues.edu.sv.bachestpi.entity.ObjetoEstado;
 
 /**
  *
@@ -20,7 +20,7 @@ public class ObjetoEstadoBean {
     EntityManager em = emf.createEntityManager();
     EntityTransaction tx = em.getTransaction();
     
-    public boolean crear(Objeto nuevo){      
+    public boolean crear(ObjetoEstado nuevo){      
         try {
             tx.begin();
             em.persist(nuevo);
