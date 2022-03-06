@@ -32,5 +32,28 @@ public class ObjetoBean {
     }
 
     
+    public boolean eliminar(Integer id) throws NonexistentEntityException{
+        Objeto eliminar;
+        EntityManagerFactory emf=Persistence.createEntityManagerFactory("bachesUP");
+        EntityManager em=emf.createEntityManager();
+        EntityTransaction tx=em.getTransaction();
+        eliminar=em.getReference(Objeto.class,id);
+        
+        try {
+            tx.begin();
+            eliminar.getIdObjeto();
+            em.remove(eliminar);
+            tx.commit();
+            return true;
+            
+        } catch (Exception e) {
+            tx.rollback();
+        }finally {
+           if (em!=null){
+            em.close();
+        }
+        }
+        return false;
+    }
     
 }
