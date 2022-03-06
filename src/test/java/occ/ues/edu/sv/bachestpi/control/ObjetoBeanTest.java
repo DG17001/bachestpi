@@ -25,7 +25,7 @@ public class ObjetoBeanTest extends TestCase {
         System.out.println("crear");
         Objeto nuevo = null;
         ObjetoBean instance = new ObjetoBean();
-        boolean expResult = false;
+        boolean expResult = true;
         boolean result = instance.crear(nuevo);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -34,7 +34,7 @@ public class ObjetoBeanTest extends TestCase {
     
     /**
      * Test of eliminar method, of class ObjetoBean.
-    */ 
+    */
     public void testEliminar() throws Exception {
         System.out.println("eliminar");
         Integer id = null;
@@ -48,7 +48,7 @@ public class ObjetoBeanTest extends TestCase {
     
     /**
      * Test of modificar method, of class ObjetoBean.
-    }*/ 
+    */
     public void testModificar() throws Exception {
         System.out.println("modificar");
         Objeto mod = null;
