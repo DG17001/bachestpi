@@ -21,7 +21,8 @@ public class EstadoBeanTest {
 
     /**
      * Test of crear method, of class EstadoBean.
-     */          
+    */
+    
     @org.junit.jupiter.api.Test
     public void testCrear() {
         System.out.println("Crear");
@@ -44,11 +45,11 @@ public class EstadoBeanTest {
     }
 
     @org.junit.jupiter.api.Test
-    public void testModificar(){
+    public void testModificar() throws NonexistentEntityException{
         System.out.println("Modificar");
         Estado editar=new Estado();
-        editar.setIdEstado(6);
-        editar.setNombre("Modificando tupla");
+        editar.setIdEstado(5);
+        editar.setNombre("Modificando entidad");
         editar.setFechaCreacion(new Date());
         EstadoBean instance=new EstadoBean();
         boolean expResult=true;
