@@ -78,7 +78,7 @@ public class ObjetoBean {
     public boolean buscar(Long id){
         try {
             tx.begin();
-            em.createQuery("select * from estado where id_estado="+id);
+            em.createQuery("select * from estado where id_objeto="+id);
             tx.commit();
             System.out.println(em.createQuery("select * from estado where id_estado=2"));
             System.out.println("Registro con id "+id+" encontrado");
