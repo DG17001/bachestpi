@@ -1,6 +1,9 @@
 package occ.ues.edu.sv.bachestpi.control;
 
+import com.sun.jdi.connect.spi.Connection;
 import java.io.Serializable;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,13 +13,13 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
 import occ.ues.edu.sv.bachestpi.entity.Estado;
-
+        
 public class EstadoBean implements Serializable{
     
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("bachesUP");
     EntityManager em = emf.createEntityManager();
     EntityTransaction tx = em.getTransaction();
-    
+       
     public boolean crear(Estado nuevo){      
         
         try {
@@ -77,21 +80,19 @@ public class EstadoBean implements Serializable{
         }
         return false;
     }
-   
-    public List<Estado> findEstadoEntities(boolean all, int maxResults, int firstResult) {
+     
+    
+    public boolean buscar(Integer id){
         try {
-            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Estado.class));
-            Query q = em.createQuery(cq);
-            if (!all) {
-                q.setMaxResults(maxResults);
-                q.setFirstResult(firstResult);
-            }
-            return q.getResultList();
-        } finally {
-            em.close();
+            tx.begin();
+            em.createQuery("select * from estado where id_estado=2");
+            tx.commit();
+            System.out.println(em.createQuery("select * from estado where id_estado=2"));
+            System.out.println("Registro con id "+id+" encontrado");
+            return true;
+        } catch (Exception e) {
+            tx.rollback();
         }
+        return false;
     }
-    
-    
 }

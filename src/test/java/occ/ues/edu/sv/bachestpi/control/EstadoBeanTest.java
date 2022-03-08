@@ -8,7 +8,6 @@ package occ.ues.edu.sv.bachestpi.control;
 import java.time.chrono.Era;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import static junit.framework.Assert.assertEquals;
@@ -29,7 +28,7 @@ public class EstadoBeanTest {
 
     /**
      * Test of crear method, of class EstadoBean.
-    */
+    
     
     @org.junit.jupiter.api.Test
     public void testCrear() {
@@ -67,12 +66,20 @@ public class EstadoBeanTest {
     
     public void testRead(){
         System.out.println("Leer y mostrar");
-        Estado a[]=new Estado[]{};
+        Estado a[]=new Estado[7];
         Integer idEstado=new Estado().getIdEstado();
-        EstadoBean instance = new EstadoBean();
+        EstadoBean instance = new  EstadoBean();
         List<Estado> exp= Arrays.asList(a);
-        List<Estado> result = instance.findEstadoEntities(false, 12, 0);
-        assertEquals(exp,result);    
+        List<Estado> result = instance.findEstadoEntities(true, 12, 0);
+        assertEquals(List.of(a),result);    
+    }
+    */
+    public void testBuscar(){
+        System.out.println("BUSCAR");
+        EstadoBean find=new EstadoBean();
+        boolean expResult=false;
+        boolean result =find.buscar(2);
+        assertEquals(expResult,result);
     }
 
 }    
