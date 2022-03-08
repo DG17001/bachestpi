@@ -75,5 +75,19 @@ public class RutaBean {
         }
         return false;
     }
+    
+    public boolean buscar(Long id){
+        try {
+            et.begin();
+            em.createQuery("select * from estado where id_ruta="+id);
+            et.commit();
+            System.out.println(em.createQuery("select * from estado where id_estado=2"));
+            System.out.println("Registro con id "+id+" encontrado");
+            return true;
+        } catch (Exception e) {
+            et.rollback();
+        }
+        return false;
+    }
 
 }
