@@ -80,5 +80,19 @@ public class ObjetoEstadoBean {
         }
         return false;
     }
+    
+    public boolean buscar(Long id){
+        try {
+            tx.begin();
+            em.createQuery("select * from estado where id_estado="+id);
+            tx.commit();
+            System.out.println(em.createQuery("select * from estado where id_estado=2"));
+            System.out.println("Registro con id "+id+" encontrado");
+            return true;
+        } catch (Exception e) {
+            tx.rollback();
+        }
+        return false;
+    }
        
 }
