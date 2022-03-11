@@ -5,10 +5,13 @@
  */
 package occ.ues.edu.sv.bachestpi.control;
 
+import java.io.Serializable;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
 import occ.ues.edu.sv.bachestpi.entity.Objeto;
 import occ.ues.edu.sv.bachestpi.entity.ObjetoEstado;
@@ -17,82 +20,55 @@ import occ.ues.edu.sv.bachestpi.entity.ObjetoEstado;
  *
  * @author magdiel
  */
-public class ObjetoEstadoBean {
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("bachesUP");
-    EntityManager em = emf.createEntityManager();
-    EntityTransaction tx = em.getTransaction();
+public class ObjetoEstadoBean extends AbstractDataAccess<ObjetoEstado>implements Serializable{
     
-    public boolean crear(ObjetoEstado nuevo){      
-        try {
-            tx.begin();
-            em.persist(nuevo);
-            tx.commit();
-            return true;
-            
-        } catch (Exception e) {
-            tx.rollback();
-        }finally {
-           if (em!=null){
-            em.close();
-        }
-        }
-        return false;
+    @PersistenceContext (name = "bachesUP")
+    EntityManager em;   
+
+    public ObjetoEstadoBean() {
+        super(ObjetoEstado.class);
+    }
+
+    @Override
+    public EntityManager getEntityManager() {
+        return em;
+    }
+
+    @Override
+    public void crear(ObjetoEstado clase) throws IllegalArgumentException, IllegalStateException {
+        super.crear(clase); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminar(Object id) throws IllegalArgumentException, IllegalStateException {
+        super.eliminar(id); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modificar(ObjetoEstado clase) throws IllegalArgumentException, IllegalStateException {
+        super.modificar(clase); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ObjetoEstado findById(Object id) throws IllegalArgumentException, IllegalStateException {
+        return super.findById(id); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<ObjetoEstado> findAll() throws IllegalStateException {
+        return super.findAll(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<ObjetoEstado> findRange(int first, int pageSize) throws IllegalArgumentException, IllegalStateException {
+        return super.findRange(first, pageSize); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Long contar() throws IllegalStateException {
+        return super.contar(); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public boolean eliminar(Long id) throws NonexistentEntityException{
-        ObjetoEstado borrar;
-        borrar=em.getReference(ObjetoEstado.class, id);
-        
-        try {
-            tx.begin();
-            borrar.getIdObjetoEstado();
-            em.remove(borrar);
-            tx.commit();
-            return true;
-            
-        } catch (Exception e) {
-            tx.rollback();
-        }finally{
-            if(em!=null){
-                em.close();
-            }
-        }
-        return true;
-    }
     
-    public boolean modificar(ObjetoEstado modificar) throws NonexistentEntityException{
-        try {
-            tx.begin();
-            em.find(ObjetoEstado.class, modificar.getIdObjetoEstado());
-            // Si el registro con el id obtenido no existe, se creara uno nuevo
-            em.merge(modificar);
-            tx.commit();
-            return true;
-            
-        } catch (RuntimeException e) {
-            if(tx.isActive()){
-                tx.rollback();
-            }
-        }finally {
-           if (em!=null){
-            em.close();
-        }
-        }
-        return false;
-    }
     
-    public boolean buscar(Long id){
-        try {
-            tx.begin();
-            em.createQuery("select * from estado where id_objetoestado="+id);
-            tx.commit();
-            System.out.println(em.createQuery("select * from estado where id_estado=2"));
-            System.out.println("Registro con id "+id+" encontrado");
-            return true;
-        } catch (Exception e) {
-            tx.rollback();
-        }
-        return false;
-    }
-       
 }
