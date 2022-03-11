@@ -1,25 +1,65 @@
 package occ.ues.edu.sv.bachestpi.control;
 
-import com.sun.jdi.connect.spi.Connection;
 import java.io.Serializable;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaQuery;
-import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
+import javax.persistence.PersistenceContext;
 import occ.ues.edu.sv.bachestpi.entity.Estado;
         
-public class EstadoBean implements Serializable{
+public class EstadoBean extends AbstractDataAccess<Estado>implements Serializable{
     
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("bachesUP");
-    EntityManager em = emf.createEntityManager();
-    EntityTransaction tx = em.getTransaction();
-       
+    @PersistenceContext (name = "bachesUP")
+    EntityManager em;
+
+    public EstadoBean(){
+        super(Estado.class);
+    }
+    
+    @Override
+    public EntityManager getEntityManager() {
+        return em;
+    }
+    
+    @Override
+    public void crear(Estado nuevo) throws IllegalArgumentException, IllegalStateException {
+        super.crear(nuevo); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminar(Object id) throws IllegalArgumentException, IllegalStateException {
+        super.eliminar(id); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modificar(Estado clase) throws IllegalArgumentException, IllegalStateException {
+        super.modificar(clase); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Estado findById(Object id) throws IllegalArgumentException, IllegalStateException {
+        return super.findById(1); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Estado> findAll() throws IllegalStateException {
+        return super.findAll(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Estado> findRange(int first, int pageSize) throws IllegalArgumentException, IllegalStateException {
+        return super.findRange(1, 25); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    @Override
+    public Long contar() throws IllegalStateException {
+        return super.contar(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    
+    
+/*       
     public boolean crear(Estado nuevo){      
         
         try {
@@ -94,5 +134,11 @@ public class EstadoBean implements Serializable{
             tx.rollback();
         }
         return false;
+    }*/
+
+    public EstadoBean(Class clase) {
+        super(clase);
     }
+
+    
 }
