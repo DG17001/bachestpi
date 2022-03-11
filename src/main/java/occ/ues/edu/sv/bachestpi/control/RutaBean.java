@@ -1,93 +1,57 @@
 package occ.ues.edu.sv.bachestpi.control;
 
+import java.io.Serializable;
+import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
-import occ.ues.edu.sv.bachestpi.entity.Estado;
+import javax.persistence.PersistenceContext;
 import occ.ues.edu.sv.bachestpi.entity.Ruta;
 
-public class RutaBean {
+public class RutaBean extends AbstractDataAccess<Ruta>implements Serializable{
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("bachesUP");
-    EntityManager em = emf.createEntityManager();
-    EntityTransaction et = em.getTransaction();
-    
-    public boolean crear(Ruta nueva) {   
+    @PersistenceContext (name = "bachesUP")
+    EntityManager em;
 
-        try {
-            et.begin();
-            em.persist(nueva);
-            et.commit();
-            return true;
-            
-        } catch (Exception e) {
-            et.rollback();
-        }finally {
-           if (em!=null){
-            em.close();
-        }
-        }
-
-        return false;
-    }
-    
-    public boolean eliminar(Long id) throws NonexistentEntityException{
-        Ruta eliminar;
-        eliminar=em.getReference(Ruta.class, id);
-        
-        try {
-            et.begin();
-            eliminar.getIdRuta();
-            em.remove(eliminar);
-            et.commit();
-            return true;
-            
-        } catch (Exception e) {
-            et.rollback();
-        }finally {
-           if (em!=null){
-            em.close();
-        }
-        }
-        return false;
-    }
-    
-    public boolean modificar(Ruta modificar) throws NonexistentEntityException{
-        
-        try {
-            et.begin();
-            em.find(Estado.class, modificar.getIdRuta());
-            // Si el registro con el id obtenido no existe, se creara uno nuevo
-            em.merge(modificar);
-            et.commit();
-            return true;
-            
-        } catch (RuntimeException e) {
-            if(et.isActive()){
-                et.rollback();
-            }
-        }finally {
-           if (em!=null){
-            em.close();
-        }
-        }
-        return false;
-    }
-    
-    public boolean buscar(Long id){
-        try {
-            et.begin();
-            em.createQuery("select * from estado where id_ruta="+id);
-            et.commit();
-            System.out.println(em.createQuery("select * from estado where id_estado=2"));
-            System.out.println("Registro con id "+id+" encontrado");
-            return true;
-        } catch (Exception e) {
-            et.rollback();
-        }
-        return false;
+    public RutaBean() {
+        super(Ruta.class);
     }
 
+    @Override
+    public EntityManager getEntityManager() {
+        return em;
+    }
+
+    @Override
+    public void crear(Ruta clase) throws IllegalArgumentException, IllegalStateException {
+        super.crear(clase); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void eliminar(Object id) throws IllegalArgumentException, IllegalStateException {
+        super.eliminar(id); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void modificar(Ruta clase) throws IllegalArgumentException, IllegalStateException {
+        super.modificar(clase); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Ruta findById(Object id) throws IllegalArgumentException, IllegalStateException {
+        return super.findById(id); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Ruta> findAll() throws IllegalStateException {
+        return super.findAll(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Ruta> findRange(int first, int pageSize) throws IllegalArgumentException, IllegalStateException {
+        return super.findRange(first, pageSize); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Long contar() throws IllegalStateException {
+        return super.contar(); //To change body of generated methods, choose Tools | Templates.
+    }    
 }
