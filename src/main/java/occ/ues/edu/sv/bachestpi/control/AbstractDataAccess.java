@@ -20,6 +20,7 @@ import javax.persistence.criteria.Root;
 /**
  *
  * @author magdiel
+ * @param <T>
  */
 public abstract class AbstractDataAccess<T> implements Serializable {
 
