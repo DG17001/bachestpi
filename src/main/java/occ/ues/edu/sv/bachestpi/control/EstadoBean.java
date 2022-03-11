@@ -37,7 +37,7 @@ public class EstadoBean extends AbstractDataAccess<Estado>implements Serializabl
 
     @Override
     public Estado findById(Object id) throws IllegalArgumentException, IllegalStateException {
-        return super.findById(1); //To change body of generated methods, choose Tools | Templates.
+        return super.findById(id); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -47,7 +47,7 @@ public class EstadoBean extends AbstractDataAccess<Estado>implements Serializabl
 
     @Override
     public List<Estado> findRange(int first, int pageSize) throws IllegalArgumentException, IllegalStateException {
-        return super.findRange(1, 25); //To change body of generated methods, choose Tools | Templates.
+        return super.findRange(first, pageSize); //To change body of generated methods, choose Tools | Templates.
     }
     
     
