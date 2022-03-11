@@ -3,11 +3,7 @@ package occ.ues.edu.sv.bachestpi.control;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
-import occ.ues.edu.sv.bachestpi.control.exceptions.NonexistentEntityException;
 import occ.ues.edu.sv.bachestpi.entity.Objeto;
 
 public class ObjetoBean extends AbstractDataAccess<Objeto>implements Serializable{
